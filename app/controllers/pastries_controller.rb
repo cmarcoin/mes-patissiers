@@ -1,6 +1,8 @@
 class PastriesController < ApplicationController
+
+  before_action :find_pastry, only: [:show, :edit, :update, :destroy]
   def index
-    @pasties = Pastry.all
+    @pastries = Pastry.all
   end
 
   def new
@@ -9,8 +11,11 @@ class PastriesController < ApplicationController
 
   def create
     @pastry = Pastry.new(pastry_params)
-
-
+    if @pastry.save
+      redirect_to pastry_path(@pastry)
+    else
+      render :new
+    end
   end
 
   def show
@@ -20,15 +25,25 @@ class PastriesController < ApplicationController
   end
 
   def update
+    @pastry.update(pastry_params)
+    redirect_to pastry_path(@pastry)
+    flash[:notice] = "#{current.user.first_name} votre pâtisserie a bien été éditée"
   end
 
   def destroy
+    @pastry.destroy
+    redirect_to root_path
   end
 
-  def search
+  def search(search)
+    where("name iLIKE ?" , "%#{search}%")
   end
 
   private
+
+  def find_pastry
+    @pastry = Pastry.find(params[:id])
+  end
 
   def pastry_params
     params.require(:pastry).permit(:category, :name, :description, :slices,
