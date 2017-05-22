@@ -30,13 +30,19 @@ class PastriesController < ApplicationController
     flash[:notice] = "#{current.user.first_name} votre pâtisserie a bien été éditée"
   end
 
+  def search
+    @search = params[:search]
+    if params[:search]
+      @pastries = Pastry.search(params[:search]).order("created_at DESC")
+    else
+      @error = "Aucun résultat pour votre recherche"
+    end
+  end
+
+
   def destroy
     @pastry.destroy
     redirect_to root_path
-  end
-
-  def search(search)
-    where("name iLIKE ?" , "%#{search}%")
   end
 
   private
