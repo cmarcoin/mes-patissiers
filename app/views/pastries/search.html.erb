@@ -1,18 +1,29 @@
 <!-- Ceci est un test -->
 
-<div class="container">
+<div class="maintContentWrapper">
 
-<% @pastries.each do |pastry|%>
+ <div class="row">
 
-    <div class="col-xs-12 col-sm-4" >
+      <% @pastries.each do |pastry|%>
 
-    <%= render 'card', p: pastry %>
+      <div class="col-xs-12 col-sm-6" >
 
-   </div>
+        <%= render 'card', p: pastry %>
 
- <% end %>
+      </div>
 
- </div>
+      <% end %>
+
+      </div>
+</div>
+
+
+
+<div class="mapContentWrapper">
+  <p>Here goes the Google map</p>
+</div>
+
+
 
 <!-- ceci est un test
  -->
