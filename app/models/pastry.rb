@@ -4,7 +4,9 @@ class Pastry < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def self.search(search)
-    where("category iLIKE ?" , "%#{search}%")
+
+    User.near("%#{search}%", 5)
+
   end
 
 end
