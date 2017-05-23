@@ -33,12 +33,12 @@ class PastriesController < ApplicationController
 
   def search
     @search = params[:search]
-    if params[:search]
+    if params[:search] =! ""
       @users = User.near("#{params[:search]}", 5)
       @pastries = find_pastries_by_location(@users)
       # @pastries = Pastry.search(params[:search]).order("created_at DESC")
     else
-      @error = "Aucun résultat pour votre recherche"
+      @pastries = Pastry.all
     end
   end
 
