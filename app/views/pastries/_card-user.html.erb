@@ -1,0 +1,19 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path 'chocolat.jpg'%>');">
+    <div class="card-user">
+      <%= image_tag 'http://placehold.it/50x50', class:"card-user avatar avatar-large" %>
+    </div>
+    <div class="card-category">
+      <p><%= @pastry.name %> est une création faite maison</p>
+    </div>
+    <div class="card-description">
+     <h2><%=@pastry.baker.first_name%></h2>
+     <p>Paris</p>
+     <p><%= @pastry.baker.pastries.count %> articles en boutique</p>
+      <ul class="list-inline">
+        <% 5.times do  %>
+          <li><i class="fa fa-star stars-yellow"></i></li>
+        <% end %>
+        (note globale)
+    </ul>
+    </div>
+</div>

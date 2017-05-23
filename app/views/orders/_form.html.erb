@@ -1,0 +1,4 @@
+<%= simple_form_for @order do |f| %>
+   <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Pour quand ?"%>
+   <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>
+<% end %>
