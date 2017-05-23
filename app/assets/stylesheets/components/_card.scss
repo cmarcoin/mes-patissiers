@@ -8,7 +8,7 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border: 1px solid rgba(0, 0, 0, 0.1);
   width:450px;
-  height:350px;
+  height:250px;
   border-radius:4px;
 }
 .card-user {
@@ -51,28 +51,6 @@
   opacity: 0.1;
 }
 
-.card-show-user{
-  background-color: #EEEEEE;
-  height: 300px;
-  margin-top: 30px;
-  width: auto;
-  text-align: center;
-  position:relative;
 
-  .card-show-user-content {
-    position:absolute;
-
-
-  }
-}
-
-.card-show-pastry {
-  background-color: white;
-  height: 300px;
-  margin-top: 30px;
-  border-radius: 5px;
-  width: auto;
-  text-align: center;
-}
 
 

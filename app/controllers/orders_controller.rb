@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:show, :destroy]
+  before_action :find_order, only: [:show, :update, :destroy]
   def create
     @order = Order.new(order_params)
     @order.user = current_user
@@ -15,6 +15,12 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def update
+    @order.validate
+    @order.save
+    redirect_to user_path(current_user)
+  end
+
   def destroy
     if current_user == @order.user
       @order.destroy
@@ -24,6 +30,7 @@ class OrdersController < ApplicationController
       flash[:alert] = "Suppression impossible"
     end
   end
+
 
   private
 

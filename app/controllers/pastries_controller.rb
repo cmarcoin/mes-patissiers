@@ -10,7 +10,7 @@ class PastriesController < ApplicationController
 
   def create
     @pastry = Pastry.new(pastry_params)
-    @pastry.user = current_user
+    @pastry.baker = current_user
     if @pastry.save
       redirect_to pastry_path(@pastry)
     else
@@ -52,6 +52,6 @@ class PastriesController < ApplicationController
   end
 
   def pastry_params
-    params.require(:pastry).permit(:category, :name, :description, :slices, :order_warning, :price, :photo, :photo_cache)
+    params.require(:pastry).permit(:category, :name, :description, :slices, :order_warning, :price, :photo, :photo_cache, :pastry_id)
   end
 end
