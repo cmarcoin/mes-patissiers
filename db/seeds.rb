@@ -10,3 +10,7 @@ Pastry.create([{category: "Tarte aux pommes", name: "Tarte aux pommes au coulis 
 Order.create({delivery_date: "12 juin 2017", quantity: 1, user_id: 1, pastry_id: 2})
 Order.create({delivery_date: "16 juillet 2017", quantity: 1, user_id: 1, pastry_id: 1})
 Order.create({delivery_date: "20 août 2017", quantity: 2, user_id: 2, pastry_id: 3})
+Order.create({delivery_date: "12 juin 2017", quantity: 1, user_id: 1, pastry_id: 2})
+Order.create({delivery_date: "16 juillet 2017", quantity: 1, user_id: 1, pastry_id: 1})
+Order.create({delivery_date: "20 août 2017", quantity: 2, user_id: 2, pastry_id: 2})
+Order.create({delivery_date: "22 août 2017", quantity: 3, user_id: 2, pastry_id: 1})
