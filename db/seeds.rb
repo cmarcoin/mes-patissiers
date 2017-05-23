@@ -1,3 +1,7 @@
+Order.destroy_all
+Pastry.destroy_all
+Users.destroy_all
+
 User.create([{ first_name: 'Kara', last_name: 'Diaby', address: "30 avenue de la République, Paris", email: 'kara.diaby@gmail.com', password: '12345678', phone_number: "0600000000", description: "Pâtissier du Bled", is_baker: "true" },
   { first_name: 'Charles', last_name: 'Marcoin', address: "135 rue Saint-Maur, Paris", email: 'charles.marcoin@gmail.com', password: '12345678', phone_number: "0600000000", description: "CTO amateur"},
    { first_name: 'Patrick', last_name: 'Berczelly', address: "202 rue Oberkampf, Paris", email: 'berczellypatrick@gmail.com', password: '12345678', phone_number: "0600000000" ,description: "Amateur total. Inventeur de la formule 'Excellet'"} ])
