@@ -1,17 +1,21 @@
 <div class="container">
- <div class="row">
-   <div class="col-xs-12 col-md-6">
-  <!--  créer une partial -->
-     <%= @pastry.baker.first_name %>
-     <%= @pastry.baker.last_name %>
-     <%= @pastry.baker.pastries.count %>
-     <p>Ajouter la carte du baker</p>
-
-   </div>
-   <div class="col-xs-12 col-md-6">
-      <%= @pastry.name %>
-      <p>ajouter la photo</p>
-      <%= link_to "Commander", class: "btn btn-primary" %>
-   </div>
- </div>
+  <h3 class="text-center little-paded"><%= @pastry.name %>, une création de <%= @pastry.baker.first_name %></h3>
+    <p class="text-center">ajouter la photo</p>
 </div>
+<br><hr>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <%= render "card-user", pastry: @pastry %>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <%= simple_form_for [@pastry, @order] do |f| %>
+         <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
+         <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
+         <%=f.button :submit, "Commander", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
