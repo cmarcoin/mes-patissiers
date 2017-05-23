@@ -1,8 +1,10 @@
 <%= simple_form_for @pastry do |f| %>
    <%=f.input :name, placeholder: "Nom", label: "Le nom de votre pâtisserie"%>
    <%=f.input :description, label: "Sa description" %>
-   <%=f.input :slices, label: "A combien pour la manger ?", placeholder: "8" %>
+   <%=f.input :slices, label: "Pour combien de personnes", placeholder: "8" %>
    <%=f.input :price, label: "Votre prix de vente" , placeholder: "16 €"%>
    <%=f.input :order_warning, label: "Délai", placeholder: "2 jours" %>
-   <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>
+   <%= f.input :photo, label: "Ajouter une photo" %>
+    <%= f.input :photo_cache, as: :hidden %>
+   <%=f.button :submit, "Ajouter", class: "btn btn-primary btn-rounded" %>
 <% end %>

@@ -51,6 +51,6 @@ class PastriesController < ApplicationController
 
   def pastry_params
     params.require(:pastry).permit(:category, :name, :description, :slices,
-                                   :order_warning, :price, :baker_id)
+                                   :order_warning, :price, :baker_id, :photo, :photo_cache)
   end
 end
