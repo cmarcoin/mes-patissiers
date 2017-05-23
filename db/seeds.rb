@@ -8,3 +8,5 @@ Pastry.create([{category: "Tarte aux pommes", name: "Tarte aux pommes au coulis 
   {category: "Flanc", name: "Flanc aux fruits rouges", description: "Un flanc aux fruits rouges tout à fait excellent", slices: 1, order_warning: "2 jours", price: 2, baker_id: 3}])
 
 Order.create({delivery_date: "12 juin 2017", quantity: 1, user_id: 1, pastry_id: 2})
+Order.create({delivery_date: "16 juillet 2017", quantity: 1, user_id: 1, pastry_id: 1})
+Order.create({delivery_date: "20 août 2017", quantity: 2, user_id: 2, pastry_id: 3})
