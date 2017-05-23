@@ -1,9 +1,6 @@
 class PastriesController < ApplicationController
   before_action :find_pastry, only: [:show, :edit, :update, :destroy]
-  def index
-    @pastries = Pastry.all
-  end
-
+  skip_before_action :authenticate_user!, only: [:search, :show]
   def new
     @pastry = Pastry.new
   end
