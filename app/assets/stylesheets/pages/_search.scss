@@ -1,0 +1,18 @@
+div {
+  display: block;
+}
+
+.maintContentWrapper {
+  width: 66% !important;
+  position: relative !important;
+}
+
+.mapContentWrapper {
+    display: block !important;
+    left: auto !important;
+    width: 34% !important;
+    position: fixed !important;
+    top: 100px !important;
+    bottom: 0px !important;
+    right: 0px !important;
+}

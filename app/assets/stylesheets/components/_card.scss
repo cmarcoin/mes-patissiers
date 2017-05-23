@@ -1,5 +1,5 @@
 .card {
-  height: 175px;
+  height: 250px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
@@ -7,9 +7,8 @@
   margin-bottom: 15px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width:450px;
-  height:250px;
   border-radius:4px;
+  margin: 25px;
 }
 .card-user {
   position: absolute;
