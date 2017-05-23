@@ -1,6 +1,24 @@
 <div class="container">
   <h3 class="text-center little-paded"><%= @pastry.name %>, une création de <%= @pastry.baker.first_name %></h3>
-    <p class="text-center">ajouter la photo</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="wrapper-photo">
+        <%= cl_image_tag(@pastry.photo,
+          width: 500, height: 300, crop: :fill, class: "text-center") %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <p><%=@pastry.category %></p>
+      <p><i class="fa fa-cutlery pastry-details" aria-hidden="true"></i> <%= @pastry.slices %> persons</p>
+      <p><i class="fa fa-commenting pastry-details" aria-hidden="true"></i> <%= @pastry.description %></p>
+      <p><i class="fa fa-eur pastry-details" aria-hidden="true"></i> <%= @pastry.price %></p>
+      <p><i class="fa fa-clock-o pastry-details" aria-hidden="true"></i> <%= @pastry.order_warning %> jours de préparation</p>
+      <p><i class="fa fa-birthday-cake pastry-details" aria-hidden="true"></i> <%= @pastry.category %></p>
+      <% if current_user == @pastry.baker %>
+        <%= link_to "Editer la pâtisserie", edit_pastry_path(@pastry), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <br><hr>
 <div class="container">

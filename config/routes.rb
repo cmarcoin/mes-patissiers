@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :pastries do
     resources :orders, only: [:create]
   end
-  resources :orders, only: [:show, :destroy]
+  resources :orders, only: [:show, :update, :destroy]
 
   # Custom
 
