@@ -1,3 +1,11 @@
 .btn-rounded {
   border-radius: 10%;
+  transition: all 0.3s ease;
+}
+
+.btn-rounded:hover {
+  background-color: white;
+  color:#e20079;
+  border-color: #e20079;
+
 }
