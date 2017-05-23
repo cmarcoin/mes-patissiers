@@ -1,8 +1,18 @@
 <!-- Ceci est un test -->
 
+<div class="container">
+
 <% @pastries.each do |pastry|%>
-  <p><%= pastry.name %></p>
+
+    <div class="col-xs-12 col-sm-4" >
+
+    <%= render 'card', p: pastry %>
+
+   </div>
+
  <% end %>
+
+ </div>
 
 <!-- ceci est un test
  -->
