@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+
+  get 'pastries/search' => 'pastries#search' # recherche dans la home page
+
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   # Authentication management
-  devise_for :users
+
   resources :users, only: [:show]
   # Users management (with orders)
   resources :pastries do
@@ -9,6 +15,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :update, :destroy]
 
   # Custom
+
   root to: 'pages#home'
-  get 'pastries/search' => 'pastries#search' # recherche dans la home page
+
 end

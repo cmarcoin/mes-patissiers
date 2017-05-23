@@ -7,6 +7,7 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
+gem 'omniauth-facebook'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -18,6 +19,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem "geocoder"
 
 group :development, :test do
   gem 'binding_of_caller'
