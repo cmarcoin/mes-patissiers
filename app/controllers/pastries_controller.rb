@@ -30,13 +30,22 @@ class PastriesController < ApplicationController
 
   def search
     @search = params[:search]
+    @users = User.near("#{params[:search]}", 5)
     if params[:search] =! ""
-      @users = User.near("#{params[:search]}", 5)
       @pastries = find_pastries_by_location(@users)
       # @pastries = Pastry.search(params[:search]).order("created_at DESC")
     else
       @pastries = Pastry.all
     end
+
+      @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+
+
+
   end
 
   def destroy
