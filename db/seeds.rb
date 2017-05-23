@@ -1,6 +1,6 @@
 User.create([{ first_name: 'Kara', last_name: 'Diaby', address: "16 villa Gaudelet 75012 Paris", email: 'kara.diaby@gmail.com', password: '12345678', phone_number: "0600000000", description: "Pâtissier du Bled", is_baker: "true" },
   { first_name: 'Charles', last_name: 'Marcoin', address: "16 villa Gaudelet 75012 Paris", email: 'charles.marcoin@gmail.com', password: '12345678', phone_number: "0600000000", description: "CTO amateur"},
-   { first_name: 'Patrick', last_name: 'Berczelly', address: "16 villa Gaudelet 75012 Paris", email: 'berczellypatrick@gmail.com', password: '12345678', phone_number: "0600000000" ,description: "Amateur total. Inventeur de la formule 'Excellet'"} ])
+   { first_name: 'Patrick', last_name: 'Berczelly', address: "16 villa Gaudelet 75012 Paris", email: 'bla@gmail.com', password: '12345678', phone_number: "0600000000" ,description: "Amateur total. Inventeur de la formule 'Excellet'"} ])
 
 Pastry.create([{category: "Tarte aux pommes", name: "Tarte aux pommes au coulis de figues", description: "Une excellente tarte avec des tranches de pommes très fine et j'ajoute à la fin un délicieux chutney de figue", slices: 6, order_warning: "2 jours", price: 33, baker_id: 1},
   {category: "Gâteau au chocolat", name: "L'enclume", description: "Un gâteau au chocolat ultra lourd", slices: 6, order_warning: "1 jour", price: 15, baker_id: 2},
