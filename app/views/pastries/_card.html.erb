@@ -1,0 +1,18 @@
+<div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('http://placehold.it/')">
+
+  <div class="card-category">
+      <%= p.category  %>
+  </div>
+
+  <div class="card-description">
+    <h2><%= p.name %></h2>
+      <p><%= p.baker.first_name %> <%= p.baker.last_name %></p>
+  </div>
+
+    <i class="card-user avatar fa fa-pencil-square-o" aria-hidden="true"></i>
+
+  <%= link_to "Voir la pâtisserie", pastry_path(p), class: "card-link" %>
+
+</div>
