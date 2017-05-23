@@ -1,5 +1,4 @@
 class PastriesController < ApplicationController
-
   before_action :find_pastry, only: [:show, :edit, :update, :destroy]
   def index
     @pastries = Pastry.all
@@ -27,7 +26,7 @@ class PastriesController < ApplicationController
   def update
     @pastry.update(pastry_params)
     redirect_to pastry_path(@pastry)
-    flash[:notice] = "#{current.user.first_name} votre pâtisserie a bien été éditée"
+    flash[:notice] = "#{current_user.first_name} votre pâtisserie a bien été éditée"
   end
 
   def search
@@ -38,7 +37,6 @@ class PastriesController < ApplicationController
       @error = "Aucun résultat pour votre recherche"
     end
   end
-
 
   def destroy
     @pastry.destroy
