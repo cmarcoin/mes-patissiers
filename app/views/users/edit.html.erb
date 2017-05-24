@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <h2>Editez votre compte</h2>
+      <%= simple_form_for @user do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :address, label: "Adresse" %>
+          <%= f.input :phone_number, label: "Numéro de téléphone" %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Update", class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

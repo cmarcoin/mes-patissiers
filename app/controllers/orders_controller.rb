@@ -6,9 +6,9 @@ class OrdersController < ApplicationController
     @pastry = Pastry.find(params[:pastry_id])
     @order.pastry = @pastry
     if @order.save
-      redirect_to user_path(current_user)
+       redirect_to user_path(current_user)
     else
-      render 'pastries/show'
+       render 'pastries/show'
     end
   end
 

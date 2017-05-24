@@ -10,6 +10,7 @@
           <%= f.input :first_name, label: "Prénom" %>
           <%= f.input :last_name, label: "Nom" %>
           <%= f.input :address, label: "Adresse" %>
+          <%= f.input :phone_number, label: "Numéro de téléphone" %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
