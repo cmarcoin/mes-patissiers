@@ -12,7 +12,7 @@
 
     <div class="col-sm-6">
 
-      <div> <h2>Vos infos</h2><p><%= link_to "Editer mon profil", edit_user_registration_path %></p></div>
+      <h2>Vos infos</h2>
 
       <ul class="list-group">
         <li class="list-group-item"><%= @user.first_name %></li>
@@ -20,7 +20,6 @@
         <li class="list-group-item"><%= @user.address %></li>
         <li class="list-group-item"><%= @user.email %></li>
         <li class="list-group-item"><%= @user.phone_number %></li>
-        <li class="list-group-item"><%= @user.description %></li>
       </ul>
     </div>
 
@@ -32,14 +31,26 @@
        <%= order.pastry.baker.first_name %> - <%= order.pastry.name %> -
         <%= order.status %> -
         <%= order.delivery_date %>
-        <% if current_user == order.pastry.baker && order.status == "En attente de validation" %>
-          <%= link_to order_path(order), method: :patch do %>
-            <i class="fa fa-check pull-right" aria-hidden="true"></i>
-          <% end %>
-        <% end %>
       </li>
       <% end %>
-     </ul>
+       </ul>
+
+    <ul class="list-group">
+
+         <ul class="list-group">
+              <% current_user.pastries.each do |pastry| %>
+                <% if pastry.orders.count != 0 %>
+              <% pastry.orders.each do |order| %>
+              <li class="list-group-item">
+               Client : <%= order.user.first_name %> - <%= order.status %> -
+        <%= order.delivery_date %> <%= link_to order_path(order), method: :patch do %>
+            <i class="fa fa-check pull-right" aria-hidden="true"></i></li>
+            <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
+
+             </ul>
     </div>
   </div>
 </div>
