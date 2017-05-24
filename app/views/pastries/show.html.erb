@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <p><%=@pastry.category %></p>
+      <h3 class="pastry-category"><%=@pastry.category %></h3>
       <p><i class="fa fa-cutlery pastry-details" aria-hidden="true"></i> <%= @pastry.slices %> persons</p>
       <p><i class="fa fa-commenting pastry-details" aria-hidden="true"></i> <%= @pastry.description %></p>
       <p><i class="fa fa-eur pastry-details" aria-hidden="true"></i> <%= @pastry.price %></p>
@@ -23,14 +23,10 @@
       <% end %>
     </div>
   </div>
-</div>
-<br><hr>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <%= render "card-user", pastry: @pastry %>
-    </div>
-    <div class="col-xs-12 col-md-6">
+  <div class="container">
+    <hr>
+    <h4 class="text-center">Commander</h4>
+    <div class="flexbox">
       <%= simple_form_for [@pastry, @order] do |f| %>
          <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
          <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
@@ -38,6 +34,49 @@
       <% end %>
     </div>
   </div>
+  <hr>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+       <div id="map-show-pastry" style="width: 80%; height: 30vh;"></div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="user-profile">
+          <% avatar_url = @pastry.baker.facebook_picture_url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar-very-large" %><br>
+          <p><%= @pastry.baker.first_name %></p>
+          <ul class="list-inline">
+            <% 5.times do %>
+               <li><i class="fa fa-star stars-yellow"></i></li>
+            <% end %>
+               (note globale sur <%= rand(45..89) %> votes)
+          </ul>
+        </div>
+    </div>
+  </div>
 </div>
 <br>
 <br>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map-show-pastry' } }, function() {
+        provider: {
+          scrollwheel :false
+        }
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+

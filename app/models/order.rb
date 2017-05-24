@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   belongs_to :pastry
   validates :status, presence: true, inclusion: { in: ["En attente de validation", "validée"],
   message: "%{value} n'est pas un statut valide pour une commande" }
+  validates :delivery_date, presence: true
+  validates :quantity, presence: true
 
   def validate
     self.status = "validée"
