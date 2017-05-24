@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Authentication management
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
   # Users management (with orders)
   resources :pastries do
     resources :orders, only: [:create]
