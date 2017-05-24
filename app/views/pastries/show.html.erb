@@ -22,15 +22,15 @@
         <%= link_to "Editer la pâtisserie", edit_pastry_path(@pastry), class: "btn btn-primary" %>
       <% end %>
     </div>
+    </div>
   </div>
   <div class="container">
     <hr>
     <h4 class="text-center">Commander</h4>
     <div class="flexbox">
-     
      <% if user_signed_in? %>
       <% if (@user.address == nil || @user.address == "") || (@user.phone_number == nil || @user.phone_number == "") %>
-        <h2>Vous devez compléter vos informations pour pouvoir commander</h2>
+        <p>Vous devez compléter vos informations pour pouvoir commander</p>
         <%= simple_form_for [@user] do |f| %>
             <%= f.input :address, label: "Adresse" %>
             <%= f.input :phone_number, label: "Numéro de téléphone" %>
@@ -51,13 +51,11 @@
         <%=f.button :submit, "Commander", class: "btn btn-primary" %>
       <% end %>
     <% end %>
-      
-      
     </div>
   </div>
   <hr>
-</div>
 <br>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-6">
