@@ -5,7 +5,13 @@
   position: relative !important;
 }
 
+.overflowWrapper {
+  overflow: scroll !important;
+  padding-top: 120px;
+}
+
 .mapContentWrapper {
+    height: 100%;
     display: block !important;
     left: auto !important;
     width: 34% !important;
@@ -14,3 +20,4 @@
     bottom: 0px !important;
     right: 0px !important;
 }
+
