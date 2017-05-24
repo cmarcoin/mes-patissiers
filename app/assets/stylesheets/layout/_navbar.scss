@@ -9,6 +9,11 @@
   align-items: center;
   justify-content: center;
   font-family: 'Pacifico', cursive;
+  width:100%;
+  position: fixed;
+  top: 0px;
+  z-index: 3000;
+
 }
 
 /* Optional class to fix the navbar on top */
@@ -115,3 +120,12 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+// #navbar-clear {
+//   clear: both;
+// }
+
+// #nav-wrapper {
+// position: fixed;
+// top: 0px;
+// }
