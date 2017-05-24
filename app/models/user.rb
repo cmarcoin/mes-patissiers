@@ -7,13 +7,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, omniauth_providers: [:facebook]
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
-  
+
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
   # validates :address, presence: true
   # validates :phone_number, presence: true
   # validates_format_of :phone_number, with: /\A(0|\+33|0033)[1-9]([-. ]?[0-9]{2}){4}$\Z/
