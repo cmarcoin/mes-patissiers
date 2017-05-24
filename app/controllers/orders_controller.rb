@@ -5,10 +5,11 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @pastry = Pastry.find(params[:pastry_id])
     @order.pastry = @pastry
+    @user = current_user
     if @order.save
        redirect_to user_path(current_user)
     else
-       render 'pastries/show'
+       render "pastries/show"
     end
   end
 
