@@ -17,10 +17,3 @@ Pastry.create([{category: "Tarte aux pommes", name: "Tarte aux pommes au coulis 
   {category: "Paris Brest", name: "Paris Brest version Abidjan", description: "Un Paris Brest avec de l'ananas", slices: 2, order_warning: "1 jour", price: 2, baker_id: 6, remote_photo_url: "http://gateaux-et-delices.com/wp-content/uploads/2015/10/Paris-Brest1.jpg"},
    {category: "Anniversaire", name: "Gateau OM", description: "Un gâteau au chocolat excellent en forme de maillot de l'OM. Je peux écrire ce que vous voulez dessus", slices: 10, order_warning: "1 jour", price: 15, baker_id: 3, remote_photo_url: "http://img.over-blog-kiwi.com/0/42/90/70/201306/ob_cb4c624d827c421da4db197167bcc71f_maillot-de-foot-om.jpg"} ])
 
-Order.create({delivery_date: "12 juin 2017", quantity: 1, user_id: 1, pastry_id: 2})
-Order.create({delivery_date: "16 juillet 2017", quantity: 1, user_id: 1, pastry_id: 1})
-Order.create({delivery_date: "20 août 2017", quantity: 2, user_id: 2, pastry_id: 3})
-Order.create({delivery_date: "12 juin 2017", quantity: 1, user_id: 1, pastry_id: 2})
-Order.create({delivery_date: "29 mai 2017", quantity: 1, user_id: 1, pastry_id: 5})
-Order.create({delivery_date: "20 août 2017", quantity: 2, user_id: 2, pastry_id: 5})
-Order.create({delivery_date: "22 août 2017", quantity: 3, user_id: 2, pastry_id: 6})
