@@ -17,6 +17,7 @@ class PastriesController < ApplicationController
 
   def show
     @order = Order.new
+    @user = current_user
   end
 
   def edit

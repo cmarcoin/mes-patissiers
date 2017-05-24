@@ -31,11 +31,29 @@
       <%= render "card-user", pastry: @pastry %>
     </div>
     <div class="col-xs-12 col-md-6">
-      <%= simple_form_for [@pastry, @order] do |f| %>
-         <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
-         <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
-         <%=f.button :submit, "Commander", class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <% if (@user.address == nil || @user.address == "") || (@user.phone_number == nil || @user.phone_number == "") %>
+        <h2>Vous devez compléter vos informations pour pouvoir commander</h2>
+        <%= simple_form_for [@user] do |f| %>
+            <%= f.input :address, label: "Adresse" %>
+            <%= f.input :phone_number, label: "Numéro de téléphone" %>
+            <%= f.hidden_field :pastry_id, value: @pastry.id %>
+            <%= f.button :submit, "Mettre à jour", class: "btn btn-primary", method: :update%>
+        <% end %>
+       <% else %>
+        <%= simple_form_for [@pastry, @order] do |f| %>
+           <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
+           <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
+           <%=f.button :submit, "Commander", class: "btn btn-primary" %>
+        <% end %>
       <% end %>
+    <% else %>
+      <%= simple_form_for [@pastry, @order] do |f| %>
+        <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
+         <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
+        <%=f.button :submit, "Commander", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
