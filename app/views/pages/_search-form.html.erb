@@ -1,5 +1,6 @@
-<%= form_tag(pastries_search_path, :method => "get", id: "search-form", class: "form-inline") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Rechercher une pâtisserie", class: "navbar-wagon-search-input"  %>
-  <%= submit_tag "Decouvrir", class: "form-inline btn btn-primary btn-lg btn-rounded", :name => nil do %>
-  <% end %>
+<%= form_tag(pastries_search_path, :method => "get", id: "search-form", class: "form-inline")do %>
+  <div class="flexbox">
+    <%= text_field_tag :search, params[:search], placeholder: "Entrez une adresse", class: "navbar-wagon-search-input" , id: "pastry_address" %>
+    <%= submit_tag "Decouvrir", class: "btn btn-primary btn-lg"%>
+  </div>
 <% end %>
