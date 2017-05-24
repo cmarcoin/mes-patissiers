@@ -4,6 +4,9 @@ User.destroy_all
 
 User.create([{ first_name: 'Kara', last_name: 'Diaby', address: "30 avenue de la République, Paris", email: 'kara.diaby@gmail.com', password: '12345678', phone_number: "0600000000", description: "Pâtissier du Bled", is_baker: "true" },
   { first_name: 'Charles', last_name: 'Marcoin', address: "135 rue Saint-Maur, Paris", email: 'charles.marcoin@gmail.com', password: '12345678', phone_number: "0600000000", description: "CTO amateur"},
+   { first_name: 'Patrick', last_name: 'Berczelly', address: "202 rue Oberkampf, Paris", email: 'berczellypatrick@gmail.com', password: '12345678', phone_number: "0600000000" ,description: "Amateur total. Inventeur de la formule 'Excellent'"},
+   { first_name: 'Axel', last_name: 'Marcoin', address: "10 avenue Marinville, Saint-Maur", email: 'axel.marcoin@gmail.com', password: '12345678', phone_number: "0612345678", description: "Amateur éclairé d'éclaires au chocolat"},
+  { first_name: 'Tiphaine', last_name: 'Catallan', address: "100 allée Monet, Sucy en Brie", email: 'charles.marcoin@gmail.com', password: '12345678', phone_number: "0600000000", description: "CTO amateur"},
    { first_name: 'Patrick', last_name: 'Berczelly', address: "202 rue Oberkampf, Paris", email: 'berczellypatrick@gmail.com', password: '12345678', phone_number: "0600000000" ,description: "Amateur total. Inventeur de la formule 'Excellet'"} ])
 
 Pastry.create([{category: "Tarte aux pommes", name: "Tarte aux pommes au coulis de figues", description: "Une excellente tarte avec des tranches de pommes très fine et j'ajoute à la fin un délicieux chutney de figue", slices: 6, order_warning: "2 jours", price: 33, baker_id: 1, remote_photo_url: "http://img-3.journaldesfemmes.com/vAW2MkFeNHMnGKYqmbnZtwHtExE=/750x/smart/image-icu/334282_1193905315.jpg"},
