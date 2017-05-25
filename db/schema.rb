@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170523132321) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string   "delivery_date"
+    t.datetime "delivery_date"
     t.string   "status",        default: "En attente de validation"
     t.integer  "quantity"
     t.integer  "user_id"
