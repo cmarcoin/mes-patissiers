@@ -25,10 +25,10 @@ class OrdersController < ApplicationController
   def destroy
     if current_user == @order.user
       @order.destroy
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
-      redirect_to root_path # Temporaire
-      flash[:alert] = "Suppression impossible"
+      redirect_to user_path(current_user) # Temporaire
+      flash[:alert] = "Une erreur s'est produite. Suppression impossible"
     end
   end
 

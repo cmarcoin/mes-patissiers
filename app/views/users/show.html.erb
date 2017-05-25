@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <title>Mon Profil - Mes Pâtissiers</title>
+<title>Mon Profil - Mes Pâtissiers</title>
 <% end %>
 <h1 class="text-center">Votre profil</h1>
 
@@ -7,50 +7,98 @@
 
 <div class="container">
 
+
+
+
   <div class="row">
 
 
     <div class="col-sm-6">
 
-      <h2>Vos infos</h2>
+     <div class="bordered">
 
-      <ul class="list-group">
-        <li class="list-group-item"><%= @user.first_name %></li>
-        <li class="list-group-item"><%= @user.last_name %></li>
-        <li class="list-group-item"><%= @user.address %></li>
-        <li class="list-group-item"><%= @user.email %></li>
-        <li class="list-group-item"><%= @user.phone_number %></li>
-      </ul>
-    </div>
+      <h3 class="text-center">Vos infos</h2>
 
-  <div class="col-sm-6">
-    <h2>Vos commandes</h2>
-    <ul class="list-group">
-      <% @user.orders.each do |order| %>
-      <li class="list-group-item">
-       <%= order.pastry.baker.first_name %> - <%= order.pastry.name %> -
-        <%= order.status %> -
-        <%= order.delivery_date %>
-      </li>
-      <% end %>
-       </ul>
+        <div class="bordered"><%= @user.first_name %> <%= @user.last_name %></div>
 
-    <ul class="list-group">
+      <div class="bordered"><%= @user.address %></div>
+         <div class="bordered"><%= @user.email %></div>
+        <div class="bordered"><%= @user.phone_number %></div>
 
-         <ul class="list-group">
-              <% current_user.pastries.each do |pastry| %>
-                <% if pastry.orders.count != 0 %>
-              <% pastry.orders.each do |order| %>
-              <li class="list-group-item">
-               Client : <%= order.user.first_name %> - <%= order.status %> -
-        <%= order.delivery_date %> <%= link_to order_path(order), method: :patch do %>
-            <i class="fa fa-check pull-right" aria-hidden="true"></i></li>
-            <% end %>
-              <% end %>
-              <% end %>
-              <% end %>
 
-             </ul>
     </div>
   </div>
+
+  <div class="col-sm-6">
+
+   <div class="bordered">
+
+
+     <h3 class="text-center">Vos commandes</h2>
+
+    <% if @user.orders.count != 0 %>
+      <% @user.orders.each do |order| %>
+      <div class="order">
+        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+       <p><%= order.pastry.baker.first_name %> <%= order.pastry.baker.first_name %> </p>
+       <p><%= order.pastry.name %></p>
+       <p><%= order.status %></p>
+       <p><%= order.delivery_date %></p>
+        <p><%= link_to "Annuler la commande", order_path(order), class: "btn btn-primary" , method: :delete %></p>
+  </div>
+     <% end %>
+
+      <% else %>
+      <li class="list-group-item">Vous n'avez pas commandé de gâteaux !</li>
+      <% end %>
+
+
+
+
+
+      <% current_user.pastries.each do |pastry| %>
+      <% if pastry.orders.count != 0 %>
+      <h3 class="text-center">Commandes à honorer</h2>
+      <% pastry.orders.each do |order| %>
+      <div class="order"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
+       <p><em>Client : </em><%= order.user.first_name %> <%= order.user.last_name %></p>
+       <p><%= order.status %></p>
+        <p><%= order.delivery_date %></p>
+        <p><%= link_to "Valider la commande", order_path(order), class: "btn btn-primary" , method: :patch %></p>
+
+        </div>
+
+
+       <% end %>
+       <% end %>
+       <% end %>
+
+
+   </div>
+ </div>
 </div>
+
+<!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
+
+<h2>Ma vitrine</h2>
+
+<div class="container">
+ <% current_user.pastries.each do |pastry| %>
+
+ <div class="col-xs-12 col-sm-4" >
+
+  <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
+
+  <%= render 'baker-card', p: pastry %>
+
+</div>
+
+<% end %>
+
+
+</div>
+
+
+</div>
+
+
