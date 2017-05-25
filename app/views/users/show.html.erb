@@ -7,11 +7,7 @@
 
 <div class="container">
 
-
-
-
   <div class="row">
-
 
     <div class="col-sm-6">
 
@@ -19,84 +15,77 @@
 
       <h3 class="text-center">Vos infos</h2>
 
-        <div class="bordered"><%= @user.first_name %> <%= @user.last_name %></div>
+        <div class="order">
+          <i class="fa fa-pencil" id="edit-profil-pencil" aria-hidden="true"></i>
+          <p><%= @user.first_name %> <%= @user.last_name %></p>
+          <p><%= @user.address %></p>
+          <p><%= @user.email %></p>
+          <p><%= @user.phone_number %></p>
+        </div>
+      </div>
+    </div>
 
-      <div class="bordered"><%= @user.address %></div>
-         <div class="bordered"><%= @user.email %></div>
-        <div class="bordered"><%= @user.phone_number %></div>
+    <div class="col-sm-6">
 
+     <div class="bordered">
+
+      <!-- On affiche les commandes que le user a passé. Un pâtissier peut très bien avoir des commandes -->
+      <h3 class="text-center">Vos commandes</h2>
+
+        <% if @user.orders.count != 0 %>
+        <% @user.orders.each do |order| %>
+        <div class="order">
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+          <p><%= order.pastry.baker.first_name %> <%= order.pastry.baker.first_name %> </p>
+          <p><%= order.pastry.name %></p>
+          <p><%= order.status %></p>
+          <p><%= order.delivery_date %></p>
+          <p><%= link_to "Annuler la commande", order_path(order), class: "btn btn-primary delete-order", method: :delete, data: { confirm: "Etes vous sûr ?"}, remote: true %></p>
+        </div>
+        <% end %>
+
+        <% else %>
+        <div class="order">Vous n'avez pas commandé de gâteaux !</div>
+        <% end %>
+
+        <% current_user.pastries.each do |pastry| %>
+          <% if pastry.orders.count != 0 %>
+            <h3 class="text-center">Commandes à honorer</h2>
+              <% pastry.orders.each do |order| %>
+                <div class="order"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                 <p><em>Client : </em><%= order.user.first_name %> <%= order.user.last_name %></p>
+                 <p><%= order.status %></p>
+                 <p><%= order.delivery_date %></p>
+                 <p><%= link_to "Valider la commande", order_path(order), class: "btn btn-primary" , method: :patch %></p>
+            </div>
+
+                <% end %>
+             <% end %>
+         <% end %>
+
+       </div>
+     </div>
+   </div>
+
+   <!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
+
+   <h2>Ma vitrine</h2>
+
+   <div class="container">
+     <% current_user.pastries.each do |pastry| %>
+
+     <div class="col-xs-12 col-sm-4" >
+
+      <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
+
+      <%= render 'baker-card', p: pastry %>
 
     </div>
+
+    <% end %>
+
+
   </div>
-
-  <div class="col-sm-6">
-
-   <div class="bordered">
-
-
-     <h3 class="text-center">Vos commandes</h2>
-
-    <% if @user.orders.count != 0 %>
-      <% @user.orders.each do |order| %>
-      <div class="order">
-        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-       <p><%= order.pastry.baker.first_name %> <%= order.pastry.baker.first_name %> </p>
-       <p><%= order.pastry.name %></p>
-       <p><%= order.status %></p>
-       <p><%= order.delivery_date %></p>
-        <p><%= link_to "Annuler la commande", order_path(order), class: "btn btn-primary" , method: :delete %></p>
-  </div>
-     <% end %>
-
-      <% else %>
-      <li class="list-group-item">Vous n'avez pas commandé de gâteaux !</li>
-      <% end %>
-
-
-
-
-
-      <% current_user.pastries.each do |pastry| %>
-      <% if pastry.orders.count != 0 %>
-      <h3 class="text-center">Commandes à honorer</h2>
-      <% pastry.orders.each do |order| %>
-      <div class="order"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
-       <p><em>Client : </em><%= order.user.first_name %> <%= order.user.last_name %></p>
-       <p><%= order.status %></p>
-        <p><%= order.delivery_date %></p>
-        <p><%= link_to "Valider la commande", order_path(order), class: "btn btn-primary" , method: :patch %></p>
-
-        </div>
-
-
-       <% end %>
-       <% end %>
-       <% end %>
-
-
-   </div>
- </div>
-</div>
-
-<!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
-
-<h2>Ma vitrine</h2>
-
-<div class="container">
- <% current_user.pastries.each do |pastry| %>
-
- <div class="col-xs-12 col-sm-4" >
-
-  <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
-
-  <%= render 'baker-card', p: pastry %>
-
-</div>
-
-<% end %>
-
-
-</div>
 
 
 </div>

@@ -1,0 +1,9 @@
+<div id="update-user-from-profile">
+  <%= simple_form_for current_user, remote: true do |f| %>
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :last_name, label: "Nom" %>
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :phone_number, label: "Numéro de téléphone" %>
+    <%= f.button :submit, "Mettre à jour", class: "btn btn-primary", method: :update_from_profile %>
+   <% end %>
+</div>
