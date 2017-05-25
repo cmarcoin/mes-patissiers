@@ -3,10 +3,29 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
-//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/fr
 //= require_tree .
 
-$('#order_delivery_date').datepicker({
-  format: 'dd/mm/yyyy',
-  language: 'fr'
+$(document).ready(function(){
+  $('#order_delivery_date').datetimepicker({
+  //   format: 'DD-MM-YYYY HH:mm',
+  //   sideBySide: true,
+  //   stepping: 15,
+  //   showClose: true,
+  //   toolbarPlacement: 'bottom',
+  //   widgetPositioning: {
+  //     horizontal: 'auto',
+  //     vertical: 'auto'
+  //   },
+  //   icons: {
+  //     close: 'glyphicon glyphicon-check'
+  //   }
+    inline: true,
+    sideBySide: true,
+    locale: 'fr'
+  });
+
 });
+

@@ -27,6 +27,8 @@ class PastriesController < ApplicationController
   end
 
   def edit
+    if current_user == @pastry.baker
+    end
   end
 
   def update
