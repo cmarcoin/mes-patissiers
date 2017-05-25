@@ -39,7 +39,7 @@
         <% end %>
        <% else %>
         <%= simple_form_for [@pastry, @order] do |f| %>
-           <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?" %>
+           <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?", as: :string, input_html: {class: "datetimepicker"} %>
            <%= f.input :quantity, placeholder: "1", label: "Quantité" %>
            <%=f.button :submit, "Commander", class: "btn btn-primary" %>
         <% end %>
