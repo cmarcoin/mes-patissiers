@@ -54,7 +54,7 @@ class PastriesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
-      # marker.infowindow render_to_string(partial: "/pastries/baker_box", locals: { user: user })
+      marker.infowindow "<b>#{user.first_name}</b>"
     end
   end
 
