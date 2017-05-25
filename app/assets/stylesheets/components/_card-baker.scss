@@ -1,0 +1,63 @@
+.card-baker {
+  height: 250px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius:4px;
+  margin: 10px 25px;
+}
+.card-baker-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index:3;
+}
+.card-baker-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.card-baker-description {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+}
+.card-baker-description h2 {
+  font-size: 40px;
+  color: white;
+  font-family: 'Pacifico', cursive;
+}
+.card-baker-description p {
+  font-size: 15px;
+  color: white;
+  font-family: 'Courgette', cursive;
+  }
+
+.card-baker-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
+.card-baker-link:hover{
+  opacity: 0.1;
+}
+
+.card-baker-price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+  font-family: 'Pacifico', cursive;
+}

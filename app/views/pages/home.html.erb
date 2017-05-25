@@ -9,3 +9,51 @@
   </div>
 </div>
 
+
+<div class="home-wrapper">
+    <div class="home-box">
+      <i class="fa fa-map-marker home-icone" aria-hidden="true"></i>
+      <p>Entrez votre adresse et votre demande</p>
+    </div>
+    <div class="home-box">
+      <i class="fa fa-user-plus home-icone" aria-hidden="true"></i>
+      <p>Sélectionnez votre patissier selon vos critères</p>
+    </div>
+    <div class="home-box">
+      <i class="fa fa-edit home-icone" aria-hidden="true"></i>
+      <p>Créez votre demande personnalisée</p>
+    </div>
+    <div class="home-box">
+      <i class="fa fa-hourglass-end home-icone" aria-hidden="true"></i>
+      <p>Recevez votre devis en moins de 24h</p>
+    </div>
+    <div class="home-box">
+      <i class="fa fa-check home-icone" aria-hidden="true"></i>
+      <p>Validez votre devis et payez</p>
+    </div>
+    <div class="home-box">
+      <i class="fa fa-birthday-cake home-icone" aria-hidden="true"></i>
+      <p>Récuperez votre gateau et régalez-vous</p>
+    </div>
+</div>
+
+<h2 class="text-center">Quelques créations de nos patissiers </h2>
+<div class="container">
+
+
+ <div class="row">
+
+  <% @pastries.each do |pastry|%>
+
+  <div class="col-xs-12 col-sm-6" >
+
+    <%= render 'pastries/card', p: pastry %>
+
+  </div>
+
+  <% end %>
+
+
+
+</div>
+</div>

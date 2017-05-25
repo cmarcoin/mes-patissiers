@@ -1,0 +1,13 @@
+.order {
+box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+border: 1px solid rgba(0, 0, 0, 0.1);
+padding: 10px;
+position: relative;
+margin: 5px;
+}
+
+.order > a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

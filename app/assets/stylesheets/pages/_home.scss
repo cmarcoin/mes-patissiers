@@ -2,3 +2,30 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.home-wrapper {
+  max-width: 1200px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap:wrap;
+  background-color: #fffbfc;
+}
+
+.home-box {
+  width: 150px;
+  text-align: center;
+}
+
+.home-wrapper ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-box p {
+  margin-top: 10px;
+}
+
+h2 {
+  color:#e20079;
+  font-family: 'Pacifico', cursive;
+}

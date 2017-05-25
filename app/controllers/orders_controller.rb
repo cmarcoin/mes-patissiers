@@ -23,15 +23,14 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    if current_user == @order.user
-      @order.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path # Temporaire
-      flash[:alert] = "Suppression impossible"
-    end
+    @order = Order.find(params[:id])
+    @id = @order.id
+    @order.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js
+      end
   end
-
 
   private
 
