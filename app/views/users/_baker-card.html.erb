@@ -1,0 +1,19 @@
+<div class="card-baker"
+  style="background-image: linear-gradient(to right, rgba(221, 214, 243, 0.3), rgba(250, 172, 168, 0.3)), url('<%= cl_image_path p.photo, height: 300, width: 400, crop: :fill %>')">
+
+  <div class="card-baker-category">
+      <%= p.category  %>
+  </div>
+
+  <div class="card-baker-description">
+    <h2><%= p.name %></h2>
+      <p><%= p.baker.first_name %> <%= p.baker.last_name %></p>
+  </div>
+
+  <div class="card-baker-price">
+    <p><%= p.price %>€</p>
+  </div>
+
+  <%= link_to "Voir la pâtisserie", pastry_path(p), class: "card-link" %>
+
+</div>

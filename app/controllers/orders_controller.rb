@@ -5,10 +5,11 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @pastry = Pastry.find(params[:pastry_id])
     @order.pastry = @pastry
+    @user = current_user
     if @order.save
        redirect_to user_path(current_user)
     else
-       render 'pastries/show'
+       render "pastries/show"
     end
   end
 
@@ -22,15 +23,14 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    if current_user == @order.user
-      @order.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path # Temporaire
-      flash[:alert] = "Suppression impossible"
-    end
+    @order = Order.find(params[:id])
+    @id = @order.id
+    @order.destroy
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.js
+      end
   end
-
 
   private
 
