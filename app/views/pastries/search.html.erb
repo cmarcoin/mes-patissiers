@@ -28,47 +28,47 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+<%= javascript_tag do %>
 
-    function initialisation(){
-        var optionsCarte = {
-          zoom: 8,
-        }
-        var map = new google.maps.Map(document.getElementById("map"), optionsCarte);
-        var bounds = new google.maps.LatLngBounds();
+function initialisation(){
+  var optionsCarte = {
+    zoom: 8,
+  }
+  var map = new google.maps.Map(document.getElementById("map"), optionsCarte);
+  var bounds = new google.maps.LatLngBounds();
 
 
-var markerIcon = {
-  url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
-  scaledSize: new google.maps.Size(80, 80),
-  origin: new google.maps.Point(0, 0),
-  anchor: new google.maps.Point(32,65)
-};
+  var markerIcon = {
+    url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+    scaledSize: new google.maps.Size(80, 80),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(32,65)
+  };
 
-          var markerLabel = 'GO!';
-         function addMarker(lat, lng) {
-           var marker = new google.maps.Marker({
-             position: new google.maps.LatLng(lat, lng),
-             map: map,
-            label: markerLabel,
-            icon: markerIcon,
-            label: {
-              text: markerLabel,
-              color: "#eb3a44",
-              fontSize: "16px",
-              fontWeight: "bold"
-            }
-           });
-           bounds.extend(new google.maps.LatLng(lat, lng));
-         }
-
-  <% @users.each do |user| %>
-    addMarker(<%= user.latitude %>, <%= user.longitude %>);
-  <% end %>
-
-    map.fitBounds(bounds);
+  var markerLabel = 'GO!';
+  function addMarker(lat, lng) {
+   var marker = new google.maps.Marker({
+     position: new google.maps.LatLng(lat, lng),
+     map: map,
+     label: markerLabel,
+     icon: markerIcon,
+     label: {
+      text: markerLabel,
+      color: "#eb3a44",
+      fontSize: "16px",
+      fontWeight: "bold"
     }
-    google.maps.event.addDomListener(window, 'load', initialisation);
+  });
+   bounds.extend(new google.maps.LatLng(lat, lng));
+ }
 
-  <% end %>
+ <% @users.each do |user| %>
+ addMarker(<%= user.latitude %>, <%= user.longitude %>);
+ <% end %>
+
+ map.fitBounds(bounds);
+}
+google.maps.event.addDomListener(window, 'load', initialisation);
+
+<% end %>
 <% end %>
