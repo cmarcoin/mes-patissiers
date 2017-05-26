@@ -36,14 +36,27 @@
     function initialisation(){
         var optionsCarte = {
           zoom: 8,
+          zoomControl: true,
+          zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP
         }
+        }
+
         var map = new google.maps.Map(document.getElementById("map"), optionsCarte);
         var bounds = new google.maps.LatLngBounds();
 
 <!-- -->
 
             var markerIcon = {
-              url: image_url('toque.png'),
+              url: "<%= image_url('toque.png')  %>",
+              scaledSize: new google.maps.Size(80, 80),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(32,65)
+            };
+
+
+            var markerIcon2 = {
+              url: "<%= image_url('toque2.png')  %>",
               scaledSize: new google.maps.Size(80, 80),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(32,65)
@@ -52,8 +65,8 @@
           var markerLabel = '';
          function addMarker(lat, lng, markerLabel) {
            var marker = new google.maps.Marker({
-             position: new google.maps.LatLng(lat, lng),
-             map: map,
+            position: new google.maps.LatLng(lat, lng),
+            map: map,
             label: String(markerLabel),
             icon: markerIcon,
             label: {
@@ -62,7 +75,15 @@
               fontSize: "16px",
               fontWeight: "bold"
             }
+
            });
+                google.maps.event.addListener(marker, 'mouseover', function() {
+                marker.setIcon(markerIcon2);
+            });
+            google.maps.event.addListener(marker, 'mouseout', function() {
+                marker.setIcon(markerIcon);
+            });
+
            bounds.extend(new google.maps.LatLng(lat, lng));
          }
 
@@ -70,9 +91,13 @@
     addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.first_name %>");
   <% end %>
 
+
+
     map.fitBounds(bounds);
     }
+
     google.maps.event.addDomListener(window, 'load', initialisation);
+
 
   <% end %>
 <% end %>
