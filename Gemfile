@@ -21,7 +21,6 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem "geocoder"
 gem "coffee-rails"
-gem "gmaps4rails"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
