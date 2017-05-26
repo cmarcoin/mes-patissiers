@@ -63,32 +63,34 @@
             };
 
           var markerLabel = '';
-         function addMarker(lat, lng, markerLabel) {
-           var marker = new google.maps.Marker({
+            function addMarker(lat, lng, markerLabel, url) {
+           var marker = new MarkerWithLabel({
             position: new google.maps.LatLng(lat, lng),
+            url: url,
             map: map,
-            label: String(markerLabel),
             icon: markerIcon,
-            label: {
-              text: markerLabel,
-              color: "#eb3a44",
-              fontSize: "16px",
-              fontWeight: "bold"
-            }
+            labelContent: String(markerLabel),
+            labelAnchor: new google.maps.Point(26, 12),
+            labelClass: "my-custom-class-for-label",
+            labelInBackground: true
 
            });
-                google.maps.event.addListener(marker, 'mouseover', function() {
-                marker.setIcon(markerIcon2);
+            google.maps.event.addListener(marker, 'mouseover', function() {
+            marker.setIcon(markerIcon2);
             });
             google.maps.event.addListener(marker, 'mouseout', function() {
                 marker.setIcon(markerIcon);
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = this.url;
             });
 
            bounds.extend(new google.maps.LatLng(lat, lng));
          }
 
   <% @users.each do |user| %>
-    addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.first_name %>");
+    addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.first_name %>", "<%= user_path(user) %>");
   <% end %>
 
 
