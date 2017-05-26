@@ -83,11 +83,15 @@
     </div>
 
     <% end %>
-
-
   </div>
 
-
+  <div class="flexbox">
+    <div id="slick">
+      <% current_user.pastries.each do |pastry| %>
+        <%= cl_image_tag pastry.photo, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

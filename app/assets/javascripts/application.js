@@ -6,6 +6,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require moment/fr
+//= require jquery.slick
 //= require_tree .
 
 $(document).ready(function(){
@@ -25,6 +26,14 @@ $(document).ready(function(){
     inline: true,
     sideBySide: true,
     locale: 'fr'
+  });
+
+  $("#slick").slick({
+    dots: true,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear'
   });
 
 });

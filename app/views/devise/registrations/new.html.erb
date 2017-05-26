@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <h2>Sign up</h2>
+      <h2>Inscription</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
+          <%= f.button :submit, "Inscription" %>
         </div>
       <% end %>  <br>
       <%= render "devise/shared/links" %>
