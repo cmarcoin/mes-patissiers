@@ -50,6 +50,17 @@
   opacity: 0;
 }
 
+.baker-delete-pastry {
+  position:absolute;
+  z-index:3;
+  bottom: 15px;
+  right:10px;
+}
+
+#baker-delete {
+  color:white;
+}
+
 .card-link:hover{
   opacity: 0.1;
 }
