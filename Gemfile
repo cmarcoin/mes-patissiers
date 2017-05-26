@@ -24,6 +24,7 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem "jquery-slick-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

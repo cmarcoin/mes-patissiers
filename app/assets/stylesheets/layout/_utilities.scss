@@ -99,4 +99,29 @@ color:#E20079;
   border-radius:4px;
 }
 
+#slick{
+  width:500px;
+}
 
+.class-silk{
+  background-color:black;
+  height:300px;
+  padding:20px;
+}
+
+.slick-track img {
+  height:auto;
+  width:500px;
+}
+
+.slick-next {
+  color:#E20079;
+}
+
+.slick-prev:before{
+  color:#E20079;
+}
+
+.slick-next:before{
+  color:#E20079;
+}
