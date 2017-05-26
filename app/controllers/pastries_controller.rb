@@ -53,11 +53,8 @@ class PastriesController < ApplicationController
       @users = User.all
     end
 
-    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-      marker.lat user.latitude
-      marker.lng user.longitude
-      marker.infowindow "<b>#{user.first_name}</b>"
-    end
+      # SOMETHING HERE TO BUILD THE RICH MARKER ?
+
   end
 
   def destroy
@@ -71,8 +68,8 @@ class PastriesController < ApplicationController
     pastries_array = []
     user_pastries_array = []
     users.each do |user|
-      user.pastries.each do |pastry|
-        user_pastries_array << pastry
+    user.pastries.each do |pastry|
+      user_pastries_array << pastry
       end
     end
     user_pastries_array.each do |pastry|
