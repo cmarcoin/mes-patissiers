@@ -22,6 +22,7 @@
 </div>
 </div>
 
+<!-- Insertion de la carte dans la div avec l'id "map", elle-même contenu dans un wrapper qui fait 34% de largeur -->
 
 <div class="mapContentWrapper">
   <div id="map" style="width: 100%; height: 100%;"></div>
@@ -30,6 +31,8 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
 
+<!-- déclartion de la fonction initialization qui construit la carte -->
+
     function initialisation(){
         var optionsCarte = {
           zoom: 8,
@@ -37,20 +40,21 @@
         var map = new google.maps.Map(document.getElementById("map"), optionsCarte);
         var bounds = new google.maps.LatLngBounds();
 
+<!-- -->
 
-var markerIcon = {
-  url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
-  scaledSize: new google.maps.Size(80, 80),
-  origin: new google.maps.Point(0, 0),
-  anchor: new google.maps.Point(32,65)
-};
+            var markerIcon = {
+              url: 'http://3.bp.blogspot.com/-Z2lqh9P1Hqk/T6bQcLdwSSI/AAAAAAAABUI/YaIeGdrD2_0/s1600/toque10.jpg',
+              scaledSize: new google.maps.Size(80, 80),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(32,65)
+            };
 
-          var markerLabel = 'GO!';
-         function addMarker(lat, lng) {
+          var markerLabel = '';
+         function addMarker(lat, lng, markerLabel) {
            var marker = new google.maps.Marker({
              position: new google.maps.LatLng(lat, lng),
              map: map,
-            label: markerLabel,
+            label: String(markerLabel),
             icon: markerIcon,
             label: {
               text: markerLabel,
@@ -63,7 +67,7 @@ var markerIcon = {
          }
 
   <% @users.each do |user| %>
-    addMarker(<%= user.latitude %>, <%= user.longitude %>);
+    addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.first_name %>");
   <% end %>
 
     map.fitBounds(bounds);
