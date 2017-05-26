@@ -14,6 +14,10 @@
     <p><%= p.price %>€</p>
   </div>
 
+  <%= link_to pastry_path(p), method: :delete, data: { confirm: "Etes vous sûr ?"}, remote: true, class: "baker-delete-pastry" do %>
+     <i class="fa fa-trash" id="baker-delete"></i>
+  <% end %>
+
   <%= link_to "Voir la pâtisserie", pastry_path(p), class: "card-link" %>
 
 </div>
