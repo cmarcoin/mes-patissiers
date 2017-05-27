@@ -6,9 +6,15 @@ class ReviewsController < ApplicationController
     @review.order = @order
     @user = current_user
     if @review.save
-      redirect_to user_path(@user)
-    else
-      render 'users/show'
+      respond_to do |format|
+        format.html { redirect_to user_path(@user)}
+        format.js
+      end
+     else
+      respond_to do |format|
+        format.html { render 'users/show'}
+        format.js
+      end
     end
   end
 

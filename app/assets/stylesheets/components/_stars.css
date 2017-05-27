@@ -1,10 +1,12 @@
-$unchecked-star: '\2606';
+$unchecked-star: '\2605';
 $unchecked-color: #888;
 $checked-star: '\2605';
 $checked-color: #e20079;
 
 .star-cb-group {
   /* remove inline-block whitespace */
+  display: flex;
+
   font-size: 0;
   * {
     font-size: 1rem;
@@ -33,7 +35,7 @@ $checked-color: #e20079;
       & + label:hover ~ label:before,
       & + label:hover:before {
       content: $checked-star;
-      color: #e52;
+      color: #e20079;
       text-shadow: 0 0 1px #333;
     }
   }
@@ -69,7 +71,7 @@ $checked-color: #e20079;
 
 fieldset {
   border: 0;
-  width: 5em;
+  width: 200px;
   border-radius: 1px;
   padding: 1em 1.5em 0.9em;
   margin: 1em auto;
@@ -82,4 +84,9 @@ fieldset {
 }
 h1 {
   text-align: center;
+}
+
+.rating-star {
+  color:  #e20079;
+  font-size: 20px;
 }
