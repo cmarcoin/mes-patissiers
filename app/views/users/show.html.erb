@@ -3,142 +3,132 @@
 <% end %>
 
 <% if current_user == @user %>
-  <h1 class="text-center">Votre profil</h1>
+<h1 class="text-center">Votre profil</h1>
 
-  <hr>
+<hr>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-       <div class="bordered">
-        <h3 class="text-center">Vos infos</h2>
-          <div class="order">
-            <i class="fa fa-pencil" id="edit-profil-pencil" aria-hidden="true"></i>
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-            <p><%= @user.address %></p>
-            <p><%= @user.email %></p>
-            <p><%= @user.phone_number %></p>
-          </div>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+     <div class="bordered">
+      <h3 class="text-center">Vos infos</h3>
+      <div class="order">
+        <i class="fa fa-pencil" id="edit-profil-pencil" aria-hidden="true"></i>
+        <p><%= @user.first_name %> <%= @user.last_name %></p>
+        <p><%= @user.address %></p>
+        <p><%= @user.email %></p>
+        <p><%= @user.phone_number %></p>
       </div>
-
-      <!-- On affiche les commandes que le user a passé. Un pâtissier peut très bien avoir des commandes -->
-      <h3 class="text-center">Vos commandes</h2>
-
-        <% if @user.orders.count != 0 %>
-        <% @user.orders.each do |order| %>
-        <div class="order">
-          <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-          <p><%= order.pastry.baker.first_name %> <%= order.pastry.baker.first_name %> </p>
-          <p><%= order.pastry.name %></p>
-          <p><%= order.status %></p>
-          <p><%= order.delivery_date %></p>
-          <p><%= link_to "Annuler la commande", order_path(order), class: "btn btn-primary delete-order", method: :delete, data: { confirm: "Etes vous sûr ?"}, remote: true %></p>
-
-          <% if order.status == "validée" %>
-          <% if order.review == nil %>
-            <%= simple_form_for([ order, @review ], remote: true) do |f|%>
-              <%= f.error_notification %>
-              <div class="form-inputs">
-                <%= f.input :content, label: "Donez votre avis sur votre commande" %>
-              <fieldset>
-              <p class="text-center">Notez le gateau</p>
-                <span class="star-cb-group">
-                  <input type="radio" id="rating-5" name="review[rating]" value="5" /><label for="rating-5">5</label>
-                  <input type="radio" id="rating-4" name="review[rating]" value="4" checked="checked" /><label for="rating-4">4</label>
-                  <input type="radio" id="rating-3" name="review[rating]" value="3" /><label for="rating-3">3</label>
-                  <input type="radio" id="rating-2" name="review[rating]" value="2" /><label for="rating-2">2</label>
-                  <input type="radio" id="rating-1" name="review[rating]" value="1" /><label for="rating-1">1</label>
-                </span>
-              </fieldset>
-              </div>
-              <div class="form-actions">
-                <%= f.button :submit, "Notez votre commande", class: "btn btn-primary"%>
-              </div>
-            <% end %>
-          <% else %>
-            <h2>Votre commentaire</h2>
-            <p><%= order.review.content%></p>
-
-            <h2>Votre note</h2>
-            <ul class="list-inline">
-              <% order.review.rating.times do %>
-              <li><i class="fa fa-star rating-star" aria-hidden="true"></i></li>
-              <% end %>
-            </ul>
-          <% end %>
-          <% end %>
-        </div>
-        <% end %>
-
-        <% else %>
-        <div class="order">Vous n'avez pas commandé de gâteaux !</div>
-        <% end %>
-
-        <% current_user.pastries.each do |pastry| %>
-          <% if pastry.orders.count != 0 %>
-            <h3 class="text-center">Commandes à honorer</h2>
-              <% pastry.orders.each do |order| %>
-                <div class="order"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                 <p><em>Client : </em><%= order.user.first_name %> <%= order.user.last_name %></p>
-                 <p><%= order.status %></p>
-                 <p><%= order.delivery_date %></p>
-                 <p><%= link_to "Valider la commande", order_path(order), class: "btn btn-primary" , method: :patch %></p>
-            </div>
-
-                <% end %>
-              <% end %>
-           <% end %>
-
-         </div>
-       </div>
-     </div>
-   </div>
-
-   <!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
-
-   <h2>Ma vitrine</h2>
-
-   <div class="container">
-     <% current_user.pastries.each do |pastry| %>
-
-     <div class="col-xs-12 col-sm-4" >
-
-      <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
-
-      <%= render 'users/baker-card', p: pastry %>
-
     </div>
-
-    <% end %>
   </div>
-<% end %>
 
 
-   <!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
-<% if current_user != @user %>
- <h2 class="text-center">La vitrine de <%= @user.first_name %></h2>
-  <div class="flexbox wrapper-footer-flex">
-    <div id="slick">
-      <% @user.pastries.each do |pastry| %>
-        <%= cl_image_tag pastry.photo, height: 300, width: 400, crop: :fill %>
+  <div class="col-sm-6">
+
+    <!-- On affiche les commandes que le user a passé. Un pâtissier peut très bien avoir des commandes -->
+    <h3 class="text-center">Vos commandes</h3>
+
+    <% if @user.orders.count != 0 %>
+    <% @user.orders.each do |order| %>
+    <div class="order">
+      <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+      <p><%= order.pastry.baker.first_name %> <%= order.pastry.baker.last_name %> </p>
+      <p><%= order.pastry.name %></p>
+      <p><%= order.status %></p>
+      <p><%= order.delivery_date %></p>
+      <p><%= link_to "Annuler la commande", order_path(order), class: "btn btn-primary delete-order", method: :delete, data: { confirm: "Etes vous sûr ?"}, remote: true %></p>
+
+      <% if order.status == "validée" %>
+      <% if order.review == nil %>
+      <%= simple_form_for([ order, @review ], remote: true) do |f|%>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :content, label: "Donez votre avis sur votre commande" %>
+        <fieldset>
+          <p class="text-center">Notez le gateau</p>
+          <span class="star-cb-group">
+            <input type="radio" id="rating-5" name="review[rating]" value="5" /><label for="rating-5">5</label>
+            <input type="radio" id="rating-4" name="review[rating]" value="4" checked="checked" /><label for="rating-4">4</label>
+            <input type="radio" id="rating-3" name="review[rating]" value="3" /><label for="rating-3">3</label>
+            <input type="radio" id="rating-2" name="review[rating]" value="2" /><label for="rating-2">2</label>
+            <input type="radio" id="rating-1" name="review[rating]" value="1" /><label for="rating-1">1</label>
+          </span>
+        </fieldset>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Notez votre commande", class: "btn btn-primary"%>
+      </div>
+      <% end %>
+      <% else %>
+      <h2>Votre commentaire</h2>
+      <p><%= order.review.content%></p>
+
+      <h2>Votre note</h2>
+      <ul class="list-inline">
+        <% order.review.rating.times do %>
+        <li><i class="fa fa-star rating-star" aria-hidden="true"></i></li>
+        <% end %>
+      </ul>
+      <% end %>
       <% end %>
     </div>
-  </div>
-<% else %>
-   <h2 class="text-center">Ma vitrine</h2>
-   <div class="container padded">
-     <% current_user.pastries.each do |pastry| %>
-
-       <div class="col-xs-12 col-sm-4" >
-        <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
-        <%= render 'baker-card', p: pastry %>
-
-      </div>
     <% end %>
+
+    <% else %>
+    <div class="order">Vous n'avez pas commandé de gâteaux !</div>
+    <% end %>
+
+
+
+    <% current_user.pastries.each do |pastry| %>
+    <% if pastry.orders.count != 0 %>
+    <h3 class="text-center">Commandes à honorer</h2>
+      <% pastry.orders.each do |order| %>
+      <div class="order"><i class="fa fa-birthday-cake" aria-hidden="true"></i>
+       <p><em>Client : </em><%= order.user.first_name %> <%= order.user.last_name %></p>
+       <p><%= order.status %></p>
+       <p><%= order.delivery_date %></p>
+       <p><%= link_to "Valider la commande", order_path(order), class: "btn btn-primary" , method: :patch %></p>
+     </div>
+
+     <% end %>
+     <% end %>
+     <% end %>
+
    </div>
+ </div>
+</div>
+</div>
+
+
+<% end %>
+<!-- Fin du grand  if current_user == @user  -->
+
+
+<!-- On affiche au pâtissier tous les gâteaux qu'il a mis en vente -->
+<% if current_user != @user %>
+<h2 class="text-center">La vitrine de <%= @user.first_name %></h2>
+
+<% else %>
+<h2 class="text-center">Ma vitrine</h2>
+<div class="container padded">
+ <% current_user.pastries.each do |pastry| %>
+
+ <div class="col-xs-12 col-sm-4" >
+  <!-- La card utilisée est différente de celle utilisée pour la search et l'index de la home -->
+  <%= render 'baker-card', p: pastry %>
+
+</div>
+<% end %>
+</div>
 <% end %>
 
-
+<div class="flexbox wrapper-footer-flex">
+  <div id="slick">
+    <% @user.pastries.each do |pastry| %>
+    <%= cl_image_tag pastry.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+</div>
 
 
