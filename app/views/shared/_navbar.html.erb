@@ -8,7 +8,7 @@
       <!-- Different navigation if login or not -->
       <% if user_signed_in? %>
 
-      <%= link_to "Devenez Patissier", new_pastry_path, class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
+      <%= link_to "Parrainez vos amis", new_pastry_path, class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
 
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
       <%= image_tag "logo.png" %>
@@ -31,6 +31,11 @@
             <li>
               <%= link_to edit_user_registration_path do %>
               <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_path(current_user) do %>
+              <i class="fa fa-tachometer"></i> <%= t(".profile", default: "Dashboard") %>
               <% end %>
             </li>
             <li>
@@ -61,7 +66,7 @@
       <% else %>
 
       <!-- Login text link -->
-      <%= link_to "Devenez Patissier", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
+      <%= link_to "Parrainez vos amis", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link hidden-xs hidden-sm" %>
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
       <%= image_tag "logo.png" %>
       <% end %>

@@ -42,18 +42,10 @@
          <%= f.button :submit, "Mettre à jour", class: "btn btn-primary", method: :update%>
          <% end %>
          <% else %>
-         <%= simple_form_for [@pastry, @order] do |f| %>
-         <%=f.input :delivery_date,  placeholder: "Date de retrait", label: "Quand voulez vous déguster ?", as: :string, input_html: {class: "datetimepicker"} %>
-         <%= f.input :quantity, placeholder: "Entrez un nombre", label: "Quantité" %>
-         <%=f.button :submit, "Commander", class: "btn btn-primary" %>
-         <% end %>
+          <%= render 'order-form', p: @pastry, o: @order %>
          <% end %>
          <% else %>
-         <%= simple_form_for [@pastry, @order] do |f| %>
-         <%=f.input :delivery_date, placeholder: "Date de retrait", label: "Quand voulez vous déguster ?", as: :string, input_html: {class: "datetimepicker"} %>
-         <%= f.input :quantity, placeholder: "Entrez un nombre", label: "Quantité" %>
-         <%=f.button :submit, "Commander", class: "btn btn-primary" %>
-         <% end %>
+           <%= render 'order-form', p: @pastry, o: @order %>
          <% end %>
        </div>
      </div>
@@ -64,7 +56,7 @@
       <div class="user-profile">
         <% avatar_url = @pastry.baker.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag avatar_url, class: "avatar-very-large" %><br>
-        <p><%= @pastry.baker.first_name %></p>
+        <p><%=link_to @pastry.baker.first_name, user_path(@pastry.baker) %></p>
         <ul class="list-inline">
           <% 5.times do %>
           <li><i class="fa fa-birthday-cake stars-yellow" aria-hidden="true"></i></li>
@@ -86,21 +78,21 @@
 <br>
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map-show-pastry' } }, function() {
-provider: {
-scrollwheel :false
-}
-markers = handler.addMarkers(<%= raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
+  $(document).ready(function() {
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map-show-pastry' } }, function() {
+    provider: {
+    scrollwheel :false
+    }
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+    handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+    handler.getMap().setZoom(14);
+    }
+  });
 });
 <% end %>
 <% end %>

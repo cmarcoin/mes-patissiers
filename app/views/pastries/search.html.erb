@@ -36,43 +36,73 @@
     function initialisation(){
         var optionsCarte = {
           zoom: 8,
+          zoomControl: true,
+          zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP
         }
+        }
+
         var map = new google.maps.Map(document.getElementById("map"), optionsCarte);
         var bounds = new google.maps.LatLngBounds();
 
 <!-- -->
 
             var markerIcon = {
-              url: 'http://3.bp.blogspot.com/-Z2lqh9P1Hqk/T6bQcLdwSSI/AAAAAAAABUI/YaIeGdrD2_0/s1600/toque10.jpg',
+              url: "<%= image_url('toque.png')  %>",
+              scaledSize: new google.maps.Size(80, 80),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(32,65)
+            };
+
+
+            var markerIcon2 = {
+              url: "<%= image_url('toque2.png')  %>",
               scaledSize: new google.maps.Size(80, 80),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(32,65)
             };
 
           var markerLabel = '';
-         function addMarker(lat, lng, markerLabel) {
-           var marker = new google.maps.Marker({
-             position: new google.maps.LatLng(lat, lng),
-             map: map,
-            label: String(markerLabel),
+            function addMarker(lat, lng, markerLabel, url, id) {
+           var marker = new MarkerWithLabel({
+            position: new google.maps.LatLng(lat, lng),
+            url: url,
+            id: id,
+            map: map,
             icon: markerIcon,
-            label: {
-              text: markerLabel,
-              color: "#eb3a44",
-              fontSize: "16px",
-              fontWeight: "bold"
-            }
+            labelContent: String(markerLabel),
+            labelAnchor: new google.maps.Point(26, 12),
+            labelClass: "my-custom-class-for-label",
+            labelInBackground: true
+
            });
+            google.maps.event.addListener(marker, 'mouseover', function() {
+            marker.setIcon(markerIcon2);
+            });
+            google.maps.event.addListener(marker, 'mouseout', function() {
+                marker.setIcon(markerIcon);
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = this.url;
+            });
+
            bounds.extend(new google.maps.LatLng(lat, lng));
          }
 
   <% @users.each do |user| %>
-    addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.first_name %>");
+    addMarker(<%= user.latitude %>, <%= user.longitude %>, "<%= user.pastries.first != nil ? "#{user.pastries.first.price} €" : "0 dispos"  %>", "<%= user_path(user) %>", "<%= user.id %>");
   <% end %>
+
+
 
     map.fitBounds(bounds);
     }
+
     google.maps.event.addDomListener(window, 'load', initialisation);
+
+
+
 
   <% end %>
 <% end %>
